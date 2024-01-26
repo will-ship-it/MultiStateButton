@@ -42,19 +42,27 @@ struct ContentView: View {
             }
             .navigationTitle("Demo 🛠️")
             .navigationBarTitleDisplayMode(.large)
-            .alert(isPresented: $viewModel.showAlert) {
-                Alert(
-                    title: Text("Delete Downloaded Item"),
-                    message: Text("Are you sure you want to delete downloaded item? This action cannot be undone."),
-                    primaryButton: .destructive(Text("Delete")) {
-                        Task {
-                            await viewModel.deleteDownloadedItem()
-                        }
-                    },
-                    secondaryButton: .cancel {
-                        viewModel.showAlert = false
+            .alert("Delete Downloaded Item", isPresented: $viewModel.showDeleteAlert) {                
+                Button(role: .destructive) {
+                    Task {
+                        await viewModel.deleteDownloadedItem()
                     }
-                )
+                } label: {
+                    Text("Delete")
+                }
+            } message: {
+                Text("Are you sure you want to delete downloaded item? This action cannot be undone.")
+            }
+            .alert("Cancel Download", isPresented: $viewModel.showCancelAlert) {
+                Button(role: .destructive) {
+                    Task {
+                        await viewModel.cancelDownload()
+                    }
+                } label: {
+                    Text("Cancel Download")
+                }
+            } message: {
+                Text("Download is in progress. Are you sure you want to cancel it?")
             }
         }
     }

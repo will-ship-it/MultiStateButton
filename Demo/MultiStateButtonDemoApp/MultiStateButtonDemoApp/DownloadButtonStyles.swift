@@ -28,7 +28,6 @@ struct DownloadButtonDownloadInProgressStateButtonStyle: PrimitiveButtonStyle {
         } label: {
             Label("Downloading ... \(Int(progress.fractionCompleted * 100))%", systemImage: "arrow.down.circle.dotted")
         }
-        .disabled(true)
     }
 }
 

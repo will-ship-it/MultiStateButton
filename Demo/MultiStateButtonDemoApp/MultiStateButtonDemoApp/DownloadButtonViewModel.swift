@@ -26,7 +26,11 @@ class DownloadButtonViewModel: MultiStateButtonViewModelProtocol, ObservableObje
 
     @Published var state: DownloadState = .toDownload
 
-    @Published var showAlert: Bool = false
+    @Published var showDeleteAlert: Bool = false
+
+    @Published var showCancelAlert: Bool = false
+
+    private var downloadTask: Task<Void, Error>? = nil
 
     func buttonClicked(onState state: DownloadState) async {
         switch state {
@@ -34,9 +38,9 @@ class DownloadButtonViewModel: MultiStateButtonViewModelProtocol, ObservableObje
             self.state = .downloading(.init())
             self.initiateLongRunningTask()
         case .downloading:
-            break
+            self.showCancelAlert = true
         case .downloaded:
-            self.showAlert = true
+            self.showDeleteAlert = true
         }
     }
 
@@ -50,15 +54,22 @@ class DownloadButtonViewModel: MultiStateButtonViewModelProtocol, ObservableObje
         self.state = .toDownload
     }
 
+    func cancelDownload() async {
+        self.downloadTask?.cancel()
+        self.downloadTask = nil
+        self.state = .toDownload
+        self.showCancelAlert = false
+    }
+
     /// Simulate a long running task, like downloading a resource over the Internet.
     /// Update the progress as part of the state accordingly.
     private func initiateLongRunningTask() {
-        Task {
+        self.downloadTask = Task {
             for i in 0...100 {
                 let progress = Progress(totalUnitCount: 100)
                 progress.completedUnitCount = Int64(i)
                 self.state = .downloading(progress)
-                try await Task.sleep(nanoseconds: 100_000_000)
+                try await Task.sleep(nanoseconds: 100_000_000 / 1)
             }
             self.state = .downloaded
         }
