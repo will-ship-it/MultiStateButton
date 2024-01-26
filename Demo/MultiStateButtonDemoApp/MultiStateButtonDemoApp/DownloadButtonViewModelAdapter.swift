@@ -7,9 +7,11 @@
 
 import Combine
 import Foundation
+
 import MultiStateButton
 
-class DownloadButtonViewModelAdapter: MultiStateButtonViewModelAdapter {
+@MainActor
+class DownloadButtonViewModelAdapter: MultiStateButtonViewModelAdapter, ObservableObject {
 
     enum DownloadState: Equatable {
 
@@ -22,14 +24,25 @@ class DownloadButtonViewModelAdapter: MultiStateButtonViewModelAdapter {
 
     @Published var state: DownloadState = .toDownload
 
+    @Published var showAlert: Bool = false
+
     func buttonClicked(onState state: DownloadState) {
         switch state {
         case .toDownload:
             self.state = .downloading(.init())
-        case .downloading(let progress):
+            Task {
+                for i in 0...100 {
+                    let progress = Progress(totalUnitCount: 100)
+                    progress.completedUnitCount = Int64(i)
+                    self.state = .downloading(progress)
+                    try await Task.sleep(nanoseconds: 100_000_000)
+                }
+                self.state = .downloaded
+            }
+        case .downloading:
             break
         case .downloaded:
-            self.state = .downloaded
+            self.showAlert = true
         }
     }
 
@@ -37,5 +50,9 @@ class DownloadButtonViewModelAdapter: MultiStateButtonViewModelAdapter {
 
     var statePublisher: AnyPublisher<DownloadState, Never> {
         $state.eraseToAnyPublisher()
+    }
+
+    func deleteDownloadedItem() {
+        self.state = .toDownload
     }
 }
