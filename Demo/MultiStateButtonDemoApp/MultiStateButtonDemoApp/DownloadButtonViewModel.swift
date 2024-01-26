@@ -50,6 +50,8 @@ class DownloadButtonViewModel: MultiStateButtonViewModelProtocol, ObservableObje
         self.state = .toDownload
     }
 
+    /// Simulate a long running task, like downloading a resource over the Internet.
+    /// Update the progress as part of the state accordingly.
     private func initiateLongRunningTask() {
         Task {
             for i in 0...100 {

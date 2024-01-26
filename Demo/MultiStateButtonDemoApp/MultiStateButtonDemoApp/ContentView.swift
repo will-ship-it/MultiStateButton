@@ -33,14 +33,14 @@ struct ContentView: View {
 
                 Spacer()
 
-                Text("This app demonstrates the use of `MultiStateButton`. Here we have a single button element that has different appearances across its possible states.")
+                Text("This app demonstrates the use of `MultiStateButton`. Here we have a single button element that has different appearances across its possible states. Try interact with it to simulate a button that manages download of a resource.")
                     .font(.caption)
                     .foregroundStyle(.gray)
                     .padding()
 
                 Spacer()
             }
-            .navigationTitle("MultiStateButton")
+            .navigationTitle("Demo 🛠️")
             .navigationBarTitleDisplayMode(.large)
             .alert(isPresented: $viewModel.showAlert) {
                 Alert(
