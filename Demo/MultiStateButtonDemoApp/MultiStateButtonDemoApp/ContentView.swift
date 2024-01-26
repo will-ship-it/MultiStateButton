@@ -29,6 +29,7 @@ struct ContentView: View {
                         DownloadButtonDownloadCompletedProgressStateButtonStyle()
                     }
                 }
+                .buttonStyle(.borderedProminent)
 
                 Spacer()
 

@@ -32,15 +32,7 @@ class DownloadButtonViewModel: MultiStateButtonViewModelProtocol, ObservableObje
         switch state {
         case .toDownload:
             self.state = .downloading(.init())
-            Task {
-                for i in 0...100 {
-                    let progress = Progress(totalUnitCount: 100)
-                    progress.completedUnitCount = Int64(i)
-                    self.state = .downloading(progress)
-                    try await Task.sleep(nanoseconds: 100_000_000)
-                }
-                self.state = .downloaded
-            }
+            self.initiateLongRunningTask()
         case .downloading:
             break
         case .downloaded:
@@ -56,5 +48,17 @@ class DownloadButtonViewModel: MultiStateButtonViewModelProtocol, ObservableObje
 
     func deleteDownloadedItem() async {
         self.state = .toDownload
+    }
+
+    private func initiateLongRunningTask() {
+        Task {
+            for i in 0...100 {
+                let progress = Progress(totalUnitCount: 100)
+                progress.completedUnitCount = Int64(i)
+                self.state = .downloading(progress)
+                try await Task.sleep(nanoseconds: 100_000_000)
+            }
+            self.state = .downloaded
+        }
     }
 }
