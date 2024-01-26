@@ -12,15 +12,7 @@ import MultiStateButton
 
 struct ContentView: View {
 
-    @StateObject var downloadAdapter: DownloadButtonViewModelAdapter
-
-    @StateObject var viewModel: MultiStateButtonViewModel<DownloadButtonViewModelAdapter>
-
-    init() {
-        let downloadAdapter: DownloadButtonViewModelAdapter = .init()
-        self._downloadAdapter = StateObject(wrappedValue: downloadAdapter)
-        self._viewModel = StateObject(wrappedValue: .init(adapter: downloadAdapter))
-    }
+    @StateObject var viewModel: DownloadButtonViewModel = .init()
 
     var body: some View {
         NavigationStack {
@@ -49,15 +41,15 @@ struct ContentView: View {
             }
             .navigationTitle("MultiStateButton")
             .navigationBarTitleDisplayMode(.large)
-            .alert(isPresented: $downloadAdapter.showAlert) {
+            .alert(isPresented: $viewModel.showAlert) {
                 Alert(
                     title: Text("Delete Downloaded Item"),
                     message: Text("Are you sure you want to delete downloaded item? This action cannot be undone."),
                     primaryButton: .destructive(Text("Delete")) {
-                        downloadAdapter.deleteDownloadedItem()
+                        viewModel.deleteDownloadedItem()
                     },
                     secondaryButton: .cancel {
-                        downloadAdapter.showAlert = false
+                        viewModel.showAlert = false
                     }
                 )
             }

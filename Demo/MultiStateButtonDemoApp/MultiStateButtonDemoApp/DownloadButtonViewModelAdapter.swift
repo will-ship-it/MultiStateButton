@@ -11,7 +11,7 @@ import Foundation
 import MultiStateButton
 
 @MainActor
-class DownloadButtonViewModelAdapter: MultiStateButtonViewModelAdapter, ObservableObject {
+class DownloadButtonViewModel: MultiStateButtonViewModelProtocol, ObservableObject {
 
     enum DownloadState: Equatable {
 

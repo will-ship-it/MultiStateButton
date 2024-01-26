@@ -8,16 +8,16 @@
 import SwiftUI
 
 public struct MultiStateButton<
-    Adapter: MultiStateButtonViewModelAdapter,
+    ViewModel: MultiStateButtonViewModelProtocol,
     ButtonStyle: PrimitiveButtonStyle>: View
 {
-    @ObservedObject var viewModel: MultiStateButtonViewModel<Adapter>
+    @ObservedObject var viewModel: ViewModel
 
-    @ButtonStyleBuilder var styler: (Adapter.State) -> ButtonStyle
+    @ButtonStyleBuilder var styler: (ViewModel.State) -> ButtonStyle
 
     public init(
-        viewModel: MultiStateButtonViewModel<Adapter>,
-        @ButtonStyleBuilder styler: @escaping (Adapter.State) -> ButtonStyle
+        viewModel: ViewModel,
+        @ButtonStyleBuilder styler: @escaping (ViewModel.State) -> ButtonStyle
     ) {
         self.viewModel = viewModel
         self.styler = styler
@@ -25,7 +25,7 @@ public struct MultiStateButton<
 
     public var body: some View {
         Button {
-            self.viewModel.adapter.buttonClicked(onState: viewModel.state)
+            self.viewModel.buttonClicked(onState: viewModel.state)
         } label: {
             Text("Button")
         }
