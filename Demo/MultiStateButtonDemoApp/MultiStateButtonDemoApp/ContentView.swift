@@ -46,7 +46,9 @@ struct ContentView: View {
                     title: Text("Delete Downloaded Item"),
                     message: Text("Are you sure you want to delete downloaded item? This action cannot be undone."),
                     primaryButton: .destructive(Text("Delete")) {
-                        viewModel.deleteDownloadedItem()
+                        Task {
+                            await viewModel.deleteDownloadedItem()
+                        }
                     },
                     secondaryButton: .cancel {
                         viewModel.showAlert = false

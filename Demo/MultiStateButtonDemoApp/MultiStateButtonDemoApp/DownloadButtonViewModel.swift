@@ -1,5 +1,5 @@
 //
-//  DownloadButtonViewModelAdapter.swift
+//  DownloadButtonViewModel.swift
 //  MultiStateButtonDemoApp
 //
 //  Created by Will on 1/26/24.
@@ -20,13 +20,15 @@ class DownloadButtonViewModel: MultiStateButtonViewModelProtocol, ObservableObje
         case downloaded
     }
 
-    var initialState: DownloadState { .toDownload }
+    typealias State = DownloadState
+
+    let initialState: DownloadState = .toDownload
 
     @Published var state: DownloadState = .toDownload
 
     @Published var showAlert: Bool = false
 
-    func buttonClicked(onState state: DownloadState) {
+    func buttonClicked(onState state: DownloadState) async {
         switch state {
         case .toDownload:
             self.state = .downloading(.init())
@@ -46,13 +48,13 @@ class DownloadButtonViewModel: MultiStateButtonViewModelProtocol, ObservableObje
         }
     }
 
-    typealias State = DownloadState
-
     var statePublisher: AnyPublisher<DownloadState, Never> {
-        $state.eraseToAnyPublisher()
+        get async {
+            $state.eraseToAnyPublisher()
+        }
     }
 
-    func deleteDownloadedItem() {
+    func deleteDownloadedItem() async {
         self.state = .toDownload
     }
 }

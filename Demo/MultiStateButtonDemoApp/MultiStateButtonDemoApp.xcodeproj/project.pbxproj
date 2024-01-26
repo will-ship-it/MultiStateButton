@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E1D66F12B64336200785C84 /* DownloadButtonViewModelAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1D66F02B64336200785C84 /* DownloadButtonViewModelAdapter.swift */; };
+		0E1D66F12B64336200785C84 /* DownloadButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1D66F02B64336200785C84 /* DownloadButtonViewModel.swift */; };
 		0E1D66F32B64339B00785C84 /* DownloadButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1D66F22B64339B00785C84 /* DownloadButtonStyles.swift */; };
 		0E292B052B63FB54001E6F5F /* MultiStateButtonDemoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E292B042B63FB54001E6F5F /* MultiStateButtonDemoAppApp.swift */; };
 		0E292B072B63FB54001E6F5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E292B062B63FB54001E6F5F /* ContentView.swift */; };
@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0E1D66F02B64336200785C84 /* DownloadButtonViewModelAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadButtonViewModelAdapter.swift; sourceTree = "<group>"; };
+		0E1D66F02B64336200785C84 /* DownloadButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadButtonViewModel.swift; sourceTree = "<group>"; };
 		0E1D66F22B64339B00785C84 /* DownloadButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadButtonStyles.swift; sourceTree = "<group>"; };
 		0E292B012B63FB54001E6F5F /* MultiStateButtonDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultiStateButtonDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E292B042B63FB54001E6F5F /* MultiStateButtonDemoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStateButtonDemoAppApp.swift; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 				0E292B062B63FB54001E6F5F /* ContentView.swift */,
 				0E292B082B63FB54001E6F5F /* Assets.xcassets */,
 				0E292B0A2B63FB54001E6F5F /* Preview Content */,
-				0E1D66F02B64336200785C84 /* DownloadButtonViewModelAdapter.swift */,
+				0E1D66F02B64336200785C84 /* DownloadButtonViewModel.swift */,
 				0E1D66F22B64339B00785C84 /* DownloadButtonStyles.swift */,
 			);
 			path = MultiStateButtonDemoApp;
@@ -154,7 +154,7 @@
 				0E292B072B63FB54001E6F5F /* ContentView.swift in Sources */,
 				0E1D66F32B64339B00785C84 /* DownloadButtonStyles.swift in Sources */,
 				0E292B052B63FB54001E6F5F /* MultiStateButtonDemoAppApp.swift in Sources */,
-				0E1D66F12B64336200785C84 /* DownloadButtonViewModelAdapter.swift in Sources */,
+				0E1D66F12B64336200785C84 /* DownloadButtonViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

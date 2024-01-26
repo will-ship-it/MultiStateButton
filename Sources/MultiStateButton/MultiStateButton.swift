@@ -25,7 +25,9 @@ public struct MultiStateButton<
 
     public var body: some View {
         Button {
-            self.viewModel.buttonClicked(onState: viewModel.state)
+            Task {
+                await self.viewModel.buttonClicked(onState: viewModel.state)
+            }
         } label: {
             Text("Button")
         }
