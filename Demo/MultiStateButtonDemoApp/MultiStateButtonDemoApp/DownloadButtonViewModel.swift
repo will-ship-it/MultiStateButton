@@ -78,7 +78,7 @@ class DownloadButtonViewModel: MultiStateButtonViewModelProtocol, ObservableObje
     }
 }
 
-extension UInt64 {
+fileprivate extension UInt64 {
 
     static let nanosecondsPerSecond: Self = 100_000_000
 }

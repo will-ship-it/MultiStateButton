@@ -57,12 +57,12 @@
 		0E292B032B63FB54001E6F5F /* MultiStateButtonDemoApp */ = {
 			isa = PBXGroup;
 			children = (
-				0E292B042B63FB54001E6F5F /* MultiStateButtonDemoAppApp.swift */,
-				0E292B062B63FB54001E6F5F /* ContentView.swift */,
 				0E292B082B63FB54001E6F5F /* Assets.xcassets */,
-				0E292B0A2B63FB54001E6F5F /* Preview Content */,
-				0E1D66F02B64336200785C84 /* DownloadButtonViewModel.swift */,
+				0E292B062B63FB54001E6F5F /* ContentView.swift */,
 				0E1D66F22B64339B00785C84 /* DownloadButtonStyles.swift */,
+				0E1D66F02B64336200785C84 /* DownloadButtonViewModel.swift */,
+				0E292B042B63FB54001E6F5F /* MultiStateButtonDemoAppApp.swift */,
+				0E292B0A2B63FB54001E6F5F /* Preview Content */,
 			);
 			path = MultiStateButtonDemoApp;
 			sourceTree = "<group>";

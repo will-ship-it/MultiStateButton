@@ -30,6 +30,7 @@ struct DownloadButtonDownloadInProgressStateButtonStyle: PrimitiveButtonStyle {
         } label: {
             Label("Downloading ... \(Int(progress.fractionCompleted * 100))%", systemImage: "arrow.down.circle.dotted")
         }
+        .tint(.orange)
     }
 }
 
@@ -42,5 +43,6 @@ struct DownloadButtonDownloadCompletedProgressStateButtonStyle: PrimitiveButtonS
         } label: {
             Label("Completed", systemImage: "checkmark.circle")
         }
+        .tint(.green)
     }
 }
