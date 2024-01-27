@@ -46,3 +46,26 @@ struct DownloadButtonDownloadCompletedProgressStateButtonStyle: PrimitiveButtonS
         .tint(.green)
     }
 }
+
+// MARK: Extensions
+
+extension PrimitiveButtonStyle where Self == DownloadButtonToDownloadStateButtonStyle {
+
+    static var downloadButtonToDownloadStateStyle: Self {
+        .init()
+    }
+}
+
+extension PrimitiveButtonStyle where Self == DownloadButtonDownloadInProgressStateButtonStyle {
+
+    static func downloadButtonDownloadInProgressStateStyle(withProgress progress: Progress) -> Self {
+        .init(progress: progress)
+    }
+}
+
+extension PrimitiveButtonStyle where Self == DownloadButtonDownloadCompletedProgressStateButtonStyle {
+
+    static var downloadButtonDownloadCompletedStateStyle: Self {
+        .init()
+    }
+}
