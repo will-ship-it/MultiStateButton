@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-/// A button style for the 'to download' button state of the download button.
-struct DownloadButtonToDownloadStateButtonStyle: PrimitiveButtonStyle {
+/// A button style for the 'to download' button state of the download button,
+/// with label text as part of the style.
+struct DownloadButtonToDownloadStateLabeledButtonStyle: PrimitiveButtonStyle {
 
     func makeBody(configuration: PrimitiveButtonStyleConfiguration) -> some View {
         Button {
@@ -19,8 +20,9 @@ struct DownloadButtonToDownloadStateButtonStyle: PrimitiveButtonStyle {
     }
 }
 
-/// A button style for the 'download in progress' button state of the download button.
-struct DownloadButtonDownloadInProgressStateButtonStyle: PrimitiveButtonStyle {
+/// A button style for the 'download in progress' button state of the download button,
+/// with label text as part of the style.
+struct DownloadButtonDownloadInProgressStateLabeledButtonStyle: PrimitiveButtonStyle {
 
     let progress: Progress
 
@@ -28,14 +30,15 @@ struct DownloadButtonDownloadInProgressStateButtonStyle: PrimitiveButtonStyle {
         Button {
             configuration.trigger()
         } label: {
-            Label("Downloading ... \(Int(progress.fractionCompleted * 100))%", systemImage: "arrow.down.circle.dotted")
+            Label("Downloading ...", systemImage: "arrow.down.circle.dotted")
         }
         .tint(.orange)
     }
 }
 
-/// A button style for the 'download completed' button state of the download button.
-struct DownloadButtonDownloadCompletedProgressStateButtonStyle: PrimitiveButtonStyle {
+/// A button style for the 'download completed' button state of the download button,
+/// with label text as part of the style.
+struct DownloadButtonDownloadCompletedProgressStateLabeledButtonStyle: PrimitiveButtonStyle {
 
     func makeBody(configuration: PrimitiveButtonStyleConfiguration) -> some View {
         Button {
@@ -49,21 +52,21 @@ struct DownloadButtonDownloadCompletedProgressStateButtonStyle: PrimitiveButtonS
 
 // MARK: Extensions
 
-extension PrimitiveButtonStyle where Self == DownloadButtonToDownloadStateButtonStyle {
+extension PrimitiveButtonStyle where Self == DownloadButtonToDownloadStateLabeledButtonStyle {
 
     static var downloadButtonToDownloadStateStyle: Self {
         .init()
     }
 }
 
-extension PrimitiveButtonStyle where Self == DownloadButtonDownloadInProgressStateButtonStyle {
+extension PrimitiveButtonStyle where Self == DownloadButtonDownloadInProgressStateLabeledButtonStyle {
 
     static func downloadButtonDownloadInProgressStateStyle(withProgress progress: Progress) -> Self {
         .init(progress: progress)
     }
 }
 
-extension PrimitiveButtonStyle where Self == DownloadButtonDownloadCompletedProgressStateButtonStyle {
+extension PrimitiveButtonStyle where Self == DownloadButtonDownloadCompletedProgressStateLabeledButtonStyle {
 
     static var downloadButtonDownloadCompletedStateStyle: Self {
         .init()

@@ -10,28 +10,65 @@ import Combine
 
 import MultiStateButton
 
+enum ButtonBorderStyle: Equatable {
+
+    case borderedProminent
+    case borderless
+}
+
 struct ContentView: View {
 
     @StateObject var viewModel: DownloadButtonViewModel = .init()
 
+    @State var buttonBorderStyle: ButtonBorderStyle = .borderedProminent
+
     var body: some View {
         NavigationStack {
             VStack {
+                Picker("Button Border Style", selection: $buttonBorderStyle) {
+                    Text("Bordered Prominent").tag(ButtonBorderStyle.borderedProminent)
+                    Text("Borderless").tag(ButtonBorderStyle.borderless)
+                }
+                .pickerStyle(.segmented)
+                .padding()
+
                 Spacer()
 
-                MultiStateButton(viewModel: viewModel) { state in
-                    switch state {
-                    case .toDownload:
-                        DownloadButtonToDownloadStateButtonStyle()
-                    case .downloading(let progress):
-                        DownloadButtonDownloadInProgressStateButtonStyle(progress: progress)
-                    case .downloaded:
-                        DownloadButtonDownloadCompletedProgressStateButtonStyle()
+                switch buttonBorderStyle {
+                case .borderedProminent:
+                    MultiStateButton(viewModel: viewModel) { state in
+                        switch state {
+                        case .toDownload:
+                            DownloadButtonToDownloadStateLabeledButtonStyle()
+                        case .downloading(let progress):
+                            DownloadButtonDownloadInProgressStateLabeledButtonStyle(progress: progress)
+                        case .downloaded:
+                            DownloadButtonDownloadCompletedProgressStateLabeledButtonStyle()
+                        }
                     }
+                    .buttonStyle(.borderedProminent)
+                case .borderless:
+                    MultiStateButton(viewModel: viewModel) { state in
+                        switch state {
+                        case .toDownload:
+                            DownloadButtonToDownloadStateIconOnlyButtonStyle()
+                        case .downloading(let progress):
+                            DownloadButtonDownloadInProgressStateIconOnlyButtonStyle(progress: progress)
+                        case .downloaded:
+                            DownloadButtonDownloadCompletedProgressStateIconOnlyButtonStyle()
+                        }
+                    }
+                    .buttonStyle(.borderless)
+                    .animation(.smooth, value: viewModel.state)
                 }
-                .buttonStyle(.borderedProminent)
 
                 Text(self.subtitle)
+                    .font(.caption)
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.secondary)
+                    .padding()
+
+                Text(self.hintText)
                     .font(.caption)
                     .multilineTextAlignment(.center)
                     .foregroundStyle(.secondary)
@@ -74,6 +111,17 @@ struct ContentView: View {
     }
 
     private var subtitle: String {
+        switch viewModel.state {
+        case .toDownload:
+            ""
+        case .downloading(let progress):
+            "Downloading ... \(Int(progress.fractionCompleted * 100))%"
+        case .downloaded:
+            ""
+        }
+    }
+
+    private var hintText: String {
         switch viewModel.state {
         case .toDownload:
             "Click the button to initiate download."
