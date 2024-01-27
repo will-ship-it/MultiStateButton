@@ -76,7 +76,7 @@ struct ContentView: View {
 
                 Spacer()
 
-                Text("This app demonstrates the use of `MultiStateButton`. Here we have a single button element that has different appearances across its possible states. Try interact with it to simulate a button that manages download of a resource.")
+                Text("This app demonstrates the use of `MultiStateButton`. Here we have a single button element that has different appearances across all possible states of its semantics. Try interact with it to simulate the task of downloading a resource.")
                     .font(.caption)
                     .foregroundStyle(.gray)
                     .padding()

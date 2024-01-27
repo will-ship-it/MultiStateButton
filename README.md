@@ -2,6 +2,8 @@
 
 # MultiStateButton
 
+[![Build](https://github.com/will-ship-it/MultiStateButton/actions/workflows/swift.yml/badge.svg)](https://github.com/will-ship-it/MultiStateButton/actions/workflows/swift.yml)
+
 Button elements that encompass multi-state semantics are quite common on iOS.
 We can find many examples of such just from some of Apple's first party apps
 on iOS, such as buttons that manage download of podcast episodes and albums
