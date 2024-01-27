@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+/// A button element tailored for multi-state semantics,
+/// can be customized with different apperances for its different states.
 public struct MultiStateButton<
     ViewModel: MultiStateButtonViewModelProtocol,
     ButtonStyle: PrimitiveButtonStyle>: View

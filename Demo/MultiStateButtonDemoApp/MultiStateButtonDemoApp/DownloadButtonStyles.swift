@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A button style for the 'to download' button state of the download button.
 struct DownloadButtonToDownloadStateButtonStyle: PrimitiveButtonStyle {
 
     func makeBody(configuration: PrimitiveButtonStyleConfiguration) -> some View {
@@ -18,6 +19,7 @@ struct DownloadButtonToDownloadStateButtonStyle: PrimitiveButtonStyle {
     }
 }
 
+/// A button style for the 'download in progress' button state of the download button.
 struct DownloadButtonDownloadInProgressStateButtonStyle: PrimitiveButtonStyle {
 
     let progress: Progress
@@ -31,6 +33,7 @@ struct DownloadButtonDownloadInProgressStateButtonStyle: PrimitiveButtonStyle {
     }
 }
 
+/// A button style for the 'download completed' button state of the download button.
 struct DownloadButtonDownloadCompletedProgressStateButtonStyle: PrimitiveButtonStyle {
 
     func makeBody(configuration: PrimitiveButtonStyleConfiguration) -> some View {
