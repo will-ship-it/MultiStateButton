@@ -10,7 +10,6 @@ import Foundation
 
 import MultiStateButton
 
-@MainActor
 class DownloadButtonViewModel: MultiStateButtonViewModelProtocol, ObservableObject {
 
     enum DownloadState: Equatable {
@@ -24,6 +23,7 @@ class DownloadButtonViewModel: MultiStateButtonViewModelProtocol, ObservableObje
 
     let initialState: DownloadState = .toDownload
 
+    @MainActor
     @Published var state: DownloadState = .toDownload
 
     @Published var showDeleteAlert: Bool = false
@@ -32,7 +32,8 @@ class DownloadButtonViewModel: MultiStateButtonViewModelProtocol, ObservableObje
 
     private var downloadTask: Task<Void, Error>? = nil
 
-    func buttonClicked(onState state: DownloadState) async {
+    @MainActor
+    func buttonClicked(onState state: DownloadState) {
         switch state {
         case .toDownload:
             self.state = .downloading(.init())
@@ -45,15 +46,15 @@ class DownloadButtonViewModel: MultiStateButtonViewModelProtocol, ObservableObje
     }
 
     var statePublisher: AnyPublisher<DownloadState, Never> {
-        get async {
-            $state.eraseToAnyPublisher()
-        }
+        $state.eraseToAnyPublisher()
     }
 
+    @MainActor
     func deleteDownloadedItem() async {
         self.state = .toDownload
     }
 
+    @MainActor
     func cancelDownload() async {
         self.downloadTask?.cancel()
         self.downloadTask = nil
@@ -63,6 +64,7 @@ class DownloadButtonViewModel: MultiStateButtonViewModelProtocol, ObservableObje
 
     /// Simulate a long running task, like downloading a resource over the Internet.
     /// Update the progress as part of the state accordingly.
+    @MainActor
     private func initiateLongRunningTask() {
         self.downloadTask = Task {
             for i in 0...100 {

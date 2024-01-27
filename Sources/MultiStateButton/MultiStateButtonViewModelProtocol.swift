@@ -13,9 +13,9 @@ public protocol MultiStateButtonViewModelProtocol where Self: ObservableObject {
 
     var initialState: State { get }
 
-    func buttonClicked(onState: State) async
+    func buttonClicked(onState: State)
 
     var state: State { get }
 
-    var statePublisher: AnyPublisher<State, Never> { get async }
+    var statePublisher: AnyPublisher<State, Never> { get }
 }
