@@ -38,7 +38,7 @@ struct DownloadButtonDownloadInProgressStateLabeledButtonStyle: PrimitiveButtonS
 
 /// A button style for the 'download completed' button state of the download button,
 /// with label text as part of the style.
-struct DownloadButtonDownloadCompletedProgressStateLabeledButtonStyle: PrimitiveButtonStyle {
+struct DownloadButtonDownloadCompletedStateLabeledButtonStyle: PrimitiveButtonStyle {
 
     func makeBody(configuration: PrimitiveButtonStyleConfiguration) -> some View {
         Button {
@@ -54,21 +54,21 @@ struct DownloadButtonDownloadCompletedProgressStateLabeledButtonStyle: Primitive
 
 extension PrimitiveButtonStyle where Self == DownloadButtonToDownloadStateLabeledButtonStyle {
 
-    static var downloadButtonToDownloadStateStyle: Self {
+    static var downloadButtonToDownloadStateLabeledStyle: Self {
         .init()
     }
 }
 
 extension PrimitiveButtonStyle where Self == DownloadButtonDownloadInProgressStateLabeledButtonStyle {
 
-    static func downloadButtonDownloadInProgressStateStyle(withProgress progress: Progress) -> Self {
+    static func downloadButtonDownloadInProgressStateLabeledStyle(withProgress progress: Progress) -> Self {
         .init(progress: progress)
     }
 }
 
-extension PrimitiveButtonStyle where Self == DownloadButtonDownloadCompletedProgressStateLabeledButtonStyle {
+extension PrimitiveButtonStyle where Self == DownloadButtonDownloadCompletedStateLabeledButtonStyle {
 
-    static var downloadButtonDownloadCompletedStateStyle: Self {
+    static var downloadButtonDownloadCompletedStateLabeledStyle: Self {
         .init()
     }
 }

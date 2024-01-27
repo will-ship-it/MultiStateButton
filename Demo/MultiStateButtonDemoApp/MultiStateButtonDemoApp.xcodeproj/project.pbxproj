@@ -15,6 +15,7 @@
 		0E292B0C2B63FB54001E6F5F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E292B0B2B63FB54001E6F5F /* Preview Assets.xcassets */; };
 		0E292B142B63FEDC001E6F5F /* MultiStateButton in Frameworks */ = {isa = PBXBuildFile; productRef = 0E292B132B63FEDC001E6F5F /* MultiStateButton */; };
 		0E9044062B653DA200FC2BFC /* DownloadButtonIconOnlyStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9044052B653DA200FC2BFC /* DownloadButtonIconOnlyStyles.swift */; };
+		0E9044082B6545E200FC2BFC /* DownloadButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9044072B6545E200FC2BFC /* DownloadButtonStyles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		0E292B082B63FB54001E6F5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E292B0B2B63FB54001E6F5F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0E9044052B653DA200FC2BFC /* DownloadButtonIconOnlyStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadButtonIconOnlyStyles.swift; sourceTree = "<group>"; };
+		0E9044072B6545E200FC2BFC /* DownloadButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadButtonStyles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				0E292B062B63FB54001E6F5F /* ContentView.swift */,
 				0E9044052B653DA200FC2BFC /* DownloadButtonIconOnlyStyles.swift */,
 				0E1D66F22B64339B00785C84 /* DownloadButtonLabeledStyles.swift */,
+				0E9044072B6545E200FC2BFC /* DownloadButtonStyles.swift */,
 				0E1D66F02B64336200785C84 /* DownloadButtonViewModel.swift */,
 				0E292B042B63FB54001E6F5F /* MultiStateButtonDemoAppApp.swift */,
 				0E292B0A2B63FB54001E6F5F /* Preview Content */,
@@ -159,6 +162,7 @@
 				0E1D66F32B64339B00785C84 /* DownloadButtonLabeledStyles.swift in Sources */,
 				0E292B052B63FB54001E6F5F /* MultiStateButtonDemoAppApp.swift in Sources */,
 				0E1D66F12B64336200785C84 /* DownloadButtonViewModel.swift in Sources */,
+				0E9044082B6545E200FC2BFC /* DownloadButtonStyles.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +298,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MultiStateButtonDemoApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "MultiStateButton Demo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -322,6 +327,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MultiStateButtonDemoApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "MultiStateButton Demo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

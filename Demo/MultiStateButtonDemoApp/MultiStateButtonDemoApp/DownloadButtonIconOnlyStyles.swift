@@ -48,7 +48,7 @@ struct DownloadButtonDownloadInProgressStateIconOnlyButtonStyle: PrimitiveButton
 
 /// A button style for the 'download completed' button state of the download button,
 /// with icon only as part of the button label.
-struct DownloadButtonDownloadCompletedProgressStateIconOnlyButtonStyle: PrimitiveButtonStyle {
+struct DownloadButtonDownloadCompletedStateIconOnlyButtonStyle: PrimitiveButtonStyle {
 
     func makeBody(configuration: PrimitiveButtonStyleConfiguration) -> some View {
         Button {
@@ -59,5 +59,28 @@ struct DownloadButtonDownloadCompletedProgressStateIconOnlyButtonStyle: Primitiv
                 .symbolRenderingMode(.hierarchical)
         }
         .tint(.green)
+    }
+}
+
+// MARK: Extensions
+
+extension PrimitiveButtonStyle where Self == DownloadButtonToDownloadStateIconOnlyButtonStyle {
+
+    static var downloadButtonToDownloadStateIconOnlyStyle: Self {
+        .init()
+    }
+}
+
+extension PrimitiveButtonStyle where Self == DownloadButtonDownloadInProgressStateIconOnlyButtonStyle {
+
+    static func downloadButtonDownloadInProgressStateIconOnlyStyle(withProgress progress: Progress) -> Self {
+        .init(progress: progress)
+    }
+}
+
+extension PrimitiveButtonStyle where Self == DownloadButtonDownloadCompletedStateIconOnlyButtonStyle {
+
+    static var downloadButtonDownloadCompletedStateIconOnlyStyle: Self {
+        .init()
     }
 }

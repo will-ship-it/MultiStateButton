@@ -43,7 +43,7 @@ struct ContentView: View {
                         case .downloading(let progress):
                             DownloadButtonDownloadInProgressStateLabeledButtonStyle(progress: progress)
                         case .downloaded:
-                            DownloadButtonDownloadCompletedProgressStateLabeledButtonStyle()
+                            DownloadButtonDownloadCompletedStateLabeledButtonStyle()
                         }
                     }
                     .buttonStyle(.borderedProminent)
@@ -51,11 +51,11 @@ struct ContentView: View {
                     MultiStateButton(viewModel: viewModel) { state in
                         switch state {
                         case .toDownload:
-                            DownloadButtonToDownloadStateIconOnlyButtonStyle()
+                            DownloadButtonStyles.downloadButtonToDownloadStateIconOnlyStyle
                         case .downloading(let progress):
-                            DownloadButtonDownloadInProgressStateIconOnlyButtonStyle(progress: progress)
+                            DownloadButtonStyles.downloadButtonDownloadInProgressStateIconOnlyStyle(withProgress: progress)
                         case .downloaded:
-                            DownloadButtonDownloadCompletedProgressStateIconOnlyButtonStyle()
+                            DownloadButtonStyles.downloadButtonDownloadCompletedStateIconOnlyStyle
                         }
                     }
                     .buttonStyle(.borderless)
@@ -115,7 +115,7 @@ struct ContentView: View {
         case .toDownload:
             ""
         case .downloading(let progress):
-            "Downloading ... \(Int(progress.fractionCompleted * 100))%"
+            "\(Int(progress.fractionCompleted * 100))%"
         case .downloaded:
             ""
         }
