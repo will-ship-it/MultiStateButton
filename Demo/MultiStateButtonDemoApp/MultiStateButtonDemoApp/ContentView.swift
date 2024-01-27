@@ -31,6 +31,12 @@ struct ContentView: View {
                 }
                 .buttonStyle(.borderedProminent)
 
+                Text(self.subtitle)
+                    .font(.caption)
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.secondary)
+                    .padding()
+
                 Spacer()
 
                 Text("This app demonstrates the use of `MultiStateButton`. Here we have a single button element that has different appearances across its possible states. Try interact with it to simulate a button that manages download of a resource.")
@@ -64,6 +70,17 @@ struct ContentView: View {
             } message: {
                 Text("Download is in progress. Are you sure you want to cancel it?")
             }
+        }
+    }
+
+    private var subtitle: String {
+        switch viewModel.state {
+        case .toDownload:
+            "Click the button to initiate download."
+        case .downloading:
+            "Download in progress. Click the button to cancel download."
+        case .downloaded:
+            "Download completed. Click the button to delete downloaded resource."
         }
     }
 }

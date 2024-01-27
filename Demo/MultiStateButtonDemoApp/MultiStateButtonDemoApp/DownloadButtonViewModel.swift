@@ -71,9 +71,14 @@ class DownloadButtonViewModel: MultiStateButtonViewModelProtocol, ObservableObje
                 let progress = Progress(totalUnitCount: 100)
                 progress.completedUnitCount = Int64(i)
                 self.state = .downloading(progress)
-                try await Task.sleep(nanoseconds: 100_000_000 / 1)
+                try await Task.sleep(nanoseconds: .nanosecondsPerSecond)
             }
             self.state = .downloaded
         }
     }
+}
+
+extension UInt64 {
+
+    static let nanosecondsPerSecond: Self = 100_000_000
 }
